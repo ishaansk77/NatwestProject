@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>928.6666666666666,5113.333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>928.6666666666666,5036</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -76,6 +76,7 @@
       <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
       <x:String>UiPath.Mail.Activities.Business</x:String>
       <x:String>Desky.Datatable</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -149,6 +150,7 @@
       <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>Desky.Datatable</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -156,7 +158,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="938.6666666666666,5048.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="938.6666666666666,4971.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Employee" />
       <Variable x:TypeArguments="x:String" Name="empExp" />
@@ -170,19 +172,20 @@
       <Variable x:TypeArguments="sd:DataTable" Name="dt_HighSalary" />
       <Variable x:TypeArguments="x:String" Name="datatable" />
       <Variable x:TypeArguments="ue:IChartRef" Name="PieChart" />
+      <Variable x:TypeArguments="x:String" Name="HtmlContent" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="876.6666666666666,4938" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
+    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="876.6666666666666,4860.666666666667" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
       <ueab:ExcelProcessScopeX.Body>
         <ActivityAction x:TypeArguments="ui:IExcelProcess">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="842.6666666666666,4850.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="842.6666666666666,4773.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -195,16 +198,13 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:KillProcess>
-            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="780.6666666666666,4534" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="Employee_Excel\Employee_Salary.xlsx">
+            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="780.6666666666666,4456.666666666667" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="Employee_Excel\Employee_Salary.xlsx">
               <ueab:ExcelApplicationCard.Body>
                 <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="746.6666666666666,4260" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                    <Sequence.Variables>
-                      <Variable x:TypeArguments="x:String" Name="htmlBody" />
-                    </Sequence.Variables>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="746.6666666666666,4182.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -293,7 +293,7 @@
                                               <InArgument x:TypeArguments="s:String[]">[refrow("Experience").ToString.Split(" "c)]</InArgument>
                                             </Assign.Value>
                                           </Assign>
-                                          <Assign sap2010:Annotation.AnnotationText="Extracting the lower range from the experience section .&#xD;&#xA;example - (1 to 5) then expRangeLow = 1" sap:VirtualizedContainerService.HintSize="434,128.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                          <Assign sap2010:Annotation.AnnotationText="Extracting the lower range from the experience section .&#xA;example - (1 to 5) then expRangeLow = 1" sap:VirtualizedContainerService.HintSize="434,128.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_9">
                                             <Assign.To>
                                               <OutArgument x:TypeArguments="x:Int32">[expRangeLow]</OutArgument>
                                             </Assign.To>
@@ -306,7 +306,7 @@
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
                                           </Assign>
-                                          <Assign sap2010:Annotation.AnnotationText="Extracting the lower range from the experience section .&#xD;&#xA;example - (1 to 5) then expRangeHigh = 5" sap:VirtualizedContainerService.HintSize="434,128.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                          <Assign sap2010:Annotation.AnnotationText="Extracting the lower range from the experience section .&#xA;example - (1 to 5) then expRangeHigh = 5" sap:VirtualizedContainerService.HintSize="434,128.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_10">
                                             <Assign.To>
                                               <OutArgument x:TypeArguments="x:Int32">[expRangeHigh]</OutArgument>
                                             </Assign.To>
@@ -419,7 +419,7 @@
                                 <OutArgument x:TypeArguments="x:Object">[CurrentRow("Salary")]</OutArgument>
                               </Assign.To>
                               <Assign.Value>
-                                <InArgument x:TypeArguments="x:Int32">[CInt(CurrentRow("Salary").ToString.Trim)]</InArgument>
+                                <InArgument x:TypeArguments="x:Int32">[CInt(CurrentRow("Salary"))]</InArgument>
                               </Assign.Value>
                             </Assign>
                             <ueab:WriteCellX AutoIncrementRow="True" Cell="[Excel.Sheet(&quot;EmployeeDetails&quot;).Cell(&quot;E2&quot;)]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="434,161.33333333333334" sap2010:WorkflowViewState.IdRef="WriteCellX_5" Value="[CInt(CurrentRow(&quot;Salary&quot;)).ToString]" />
@@ -427,27 +427,18 @@
                         </ActivityAction>
                       </ui:ForEachRow.Body>
                     </ui:ForEachRow>
-                    <ui:FilterDataTable DataTable="[dt_Employee]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="684.6666666666666,162.66666666666666" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_HighSalary]" SelectColumnsMode="Keep">
-                      <ui:FilterDataTable.Filters>
-                        <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                          <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
-                            <ui:FilterOperationArgument.Column>
-                              <InArgument x:TypeArguments="x:String">["Salary"]</InArgument>
-                            </ui:FilterOperationArgument.Column>
-                            <ui:FilterOperationArgument.Operand>
-                              <InArgument x:TypeArguments="x:String">["10000"]</InArgument>
-                            </ui:FilterOperationArgument.Operand>
-                          </ui:FilterOperationArgument>
-                        </scg:List>
-                      </ui:FilterDataTable.Filters>
-                      <ui:FilterDataTable.SelectColumns>
-                        <scg:List x:TypeArguments="InArgument" Capacity="4">
-                          <x:Null />
-                        </scg:List>
-                      </ui:FilterDataTable.SelectColumns>
-                    </ui:FilterDataTable>
-                    <dd:ConvertDataTableToHtml DisplayName="Convert DataTable to HTML" sap:VirtualizedContainerService.HintSize="684.6666666666666,81.33333333333333" sap2010:WorkflowViewState.IdRef="ConvertDataTableToHtml_1" InputDataTable="[dt_HighSalary]" htmlText="[htmlBody]" />
-                    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" Files="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="Existing" Body="[&quot;&lt;html&gt;&#xD;&#xA;    &lt;head&gt;&lt;title&gt;High Salary Report&lt;/title&gt;&lt;/head&gt;&#xD;&#xA;    &lt;body&gt;&#xD;&#xA;        &lt;h3&gt;Employees with Salary &gt; 10,000&lt;/h3&gt;&#xD;&#xA;        &quot; + htmlBody  + &quot;&#xD;&#xA;    &lt;/body&gt;&#xD;&#xA;&lt;/html&gt;&quot;]" ConnectionMode="LegacyConfiguration" DisplayName="Send SMTP Email" Email="ishansk954@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="684.6666666666666,247.33333333333334" sap2010:WorkflowViewState.IdRef="SendMail_2" IgnoreCRL="False" IsBodyHtml="True" Password="iodt kybj ujxh crht" Port="587" SecureConnection="Auto" Server="smtp.gmail.com" Subject="Testing Mail Automation" To="ishaansk59@gmail.com" UseISConnection="False">
+                    <Assign sap:VirtualizedContainerService.HintSize="684.6666666666666,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_16">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="sd:DataTable">[dt_HighSalary]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[dt_Employee.AsEnumerable().
+Where(Function(row) CDbl(System.Text.RegularExpressions.Regex.Replace(row("salary").ToString(), "[^\d.]", "")) &gt; 10000).
+CopyToDataTable()]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <dd:ConvertDataTableToHtml DisplayName="Convert DataTable to HTML" sap:VirtualizedContainerService.HintSize="684.6666666666666,81.33333333333333" sap2010:WorkflowViewState.IdRef="ConvertDataTableToHtml_1" InputDataTable="[dt_HighSalary]" htmlText="[HtmlContent]" />
+                    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" Files="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="Existing" Body="[&quot;&lt;html&gt;&#xD;&#xA;&lt;/head&gt;&#xD;&#xA;&lt;body&gt;&#xD;&#xA;  &lt;h2&gt;HTML Report&lt;/h2&gt;&#xD;&#xA;  &quot; &amp; htmlcontent &amp; &quot;&#xD;&#xA;&lt;/body&gt;&#xD;&#xA;&lt;/html&gt;&quot;]" ConnectionMode="LegacyConfiguration" DisplayName="Send SMTP Email" Email="ishansk954@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="684.6666666666666,247.33333333333334" sap2010:WorkflowViewState.IdRef="SendMail_3" IgnoreCRL="False" IsBodyHtml="True" Password="iodt kybj ujxh crht" Port="587" SecureConnection="Auto" Server="smtp.gmail.com" Subject="HTML report of employees with more than 10k salary" To="ishaansk7@gmail.com" UseISConnection="False">
                       <ui:SendMail.AttachmentsBackup>
                         <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="Existing">
                           <usau:BackupSlot.BackupValues>
